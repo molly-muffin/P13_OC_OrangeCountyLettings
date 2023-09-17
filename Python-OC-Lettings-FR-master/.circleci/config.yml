@@ -1,0 +1,17 @@
+version: 2.1
+executors:
+  python-executor:
+    docker:
+      - image: python:3.8
+
+jobs:
+  build:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: Run Tests
+          command: python manage.py test
