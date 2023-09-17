@@ -1,5 +1,4 @@
 # Module de tests pour l'application Home.
-
 from django.test import TestCase
 from django.urls import reverse
 
