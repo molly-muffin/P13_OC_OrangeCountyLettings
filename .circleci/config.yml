@@ -25,10 +25,3 @@ workflows:
   main:
     jobs:
       - build_and_test
-          requires:
-            - build_and_test
-          filters:
-            branches:
-              only:
-                master
-    
