@@ -62,8 +62,3 @@ workflows:
           filters:
             branches:
               only:
-<<<<<<< HEAD
-                master
-=======
-                master
->>>>>>> fbfcca0c235e7a9820b136a002be64ae10804568
