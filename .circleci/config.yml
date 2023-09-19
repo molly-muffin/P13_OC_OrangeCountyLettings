@@ -33,10 +33,10 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-              echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+              docker login
               docker build --tag oc_lettings .
-              tag oc_lettings:latest $DOCKER_REPO:latest
-              docker push $DOCKER_REPO:latest
+              tag oc_lettings:latest mollymuffin/p13oc_orange_county_lettings:latest
+              docker push mollymuffin/p13oc_orange_county_lettings:latest
 
 
 workflows:
