@@ -17,8 +17,9 @@ jobs:
           name: Run Tests
           command: |
             . venv/bin/activate
+            cd $CIRCLE_WORKING_DIRECTORY
             flake8 --max-line-length 100 --exclude=migrations
-            coverage run manage.py test home
+            python manage.py test home
   build_and_push_docker:
     machine: true
     steps:
