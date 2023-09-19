@@ -11,14 +11,6 @@ Welcome to P13_OC_Orange_County_Lettings's documentation!
    :caption: Contents:
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 Guide de Développement Local pour Orange County Lettings
 ========================================================
 
