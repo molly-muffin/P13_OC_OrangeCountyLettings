@@ -20,13 +20,13 @@ jobs:
             . venv/bin/activate
             cd Python-OC-Lettings-FR-master
             flake8 --max-line-length 105
-            python manage.py test home lettings profiles
+            python manage.py test home 
+            python manage.py test lettings 
+            python manage.py test profiles 
 workflows:
   main:
     jobs:
       - build_and_test:
-          requires:
-            - build_and_test
           filters:
             branches:
               only:
