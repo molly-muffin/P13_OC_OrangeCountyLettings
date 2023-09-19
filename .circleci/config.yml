@@ -37,7 +37,6 @@ jobs:
               docker build -t oc_lettings_site:lasted .
               docker tag oc_lettings_site:lasted $DOCKER_REPO:$CIRCLE_SHA1
               docker push $DOCKER_REPO:$CIRCLE_SHA1
-              docker push $DOCKER_REPO:lasted
 
 
 
