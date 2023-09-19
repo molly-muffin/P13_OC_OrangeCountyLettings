@@ -14,8 +14,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            flake8 --max-line-length 100 --exclude=migrations
-            coverage run manage.py test
+            pytest
   build_and_push_docker:
     machine: true
     steps:
