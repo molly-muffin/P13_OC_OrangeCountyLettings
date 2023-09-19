@@ -34,10 +34,10 @@ jobs:
             name: Containerize on Docker
             command: |
               echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
-              docker build -t $DOCKER_LOGIN/p13oc_orange_county_lettings:lasted .
-              docker tag $DOCKER_LOGIN/p13oc_orange_county_lettings:lasted $DOCKER_LOGIN/p13oc_orange_county_lettings:$CIRCLE_SHA1
-              docker push $DOCKER_LOGIN/p13oc_orange_county_lettings:$CIRCLE_SHA1
-              docker push $DOCKER_LOGIN/p13oc_orange_county_lettings:lasted
+              docker build -t oc_lettings_site:lasted .
+              docker tag oc_lettings_site:lasted DOCKER_REPO:$CIRCLE_SHA1
+              docker push DOCKER_REPO:$CIRCLE_SHA1
+              docker push DOCKER_REPO:lasted
 
 
 
