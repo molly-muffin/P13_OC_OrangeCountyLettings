@@ -35,6 +35,7 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
+              cd Python-OC-Lettings-FR-master
               TAG=$CIRCLE_SHA1
               docker build -t $DOCKER_REPO:$TAG -t $DOCKER_REPO:latest .
               echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
