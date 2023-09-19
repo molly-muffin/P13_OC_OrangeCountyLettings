@@ -11,14 +11,12 @@ jobs:
           command: |
             python -m venv venv
             . venv/bin/activate
-            cd Python-OC-Lettings-FR-master
             pip install --upgrade pip
             pip install -r requirements.txt
       - run:
           name: Run Tests
           command: |
             . venv/bin/activate
-            cd Python-OC-Lettings-FR-master
             flake8 --max-line-length 105
             python manage.py test home 
             python manage.py test lettings 
@@ -35,7 +33,6 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-              cd Python-OC-Lettings-FR-master
               echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
               docker build -t oc_lettings .
               docker tag oc_lettings $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1
