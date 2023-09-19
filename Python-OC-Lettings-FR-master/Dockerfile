@@ -1,9 +1,9 @@
-FROM python:3.11
-
-WORKDIR /Python-OC-Lettings-FR-master
-COPY . /Python-OC-Lettings-FR-master
+FROM python:3-alpine
+ENV PYTHONUNBUFFERED 1
+ENV PORT 8000
+RUN mkdir /oc_p13_lettings
+WORKDIR /oc_p13_lettings
+COPY requirements.txt /oc_p13_lettings/
 RUN pip install -r requirements.txt
-
-ENV DJANGO_SETTINGS_MODULE=oc_lettings_site.oc_lettings_site.settings
-CMD ["python", "oc_lettings_site/manage.py", "collectstatic", "--noinput"]
-CMD ["gunicorn", "oc_lettings_site.oc_lettings_site.wsgi"]
+COPY . /oc_p13_lettings/
+CMD python manage.py runserver 0.0.0.0:$PORT
