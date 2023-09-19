@@ -37,9 +37,11 @@ jobs:
             command: |
               cd Python-OC-Lettings-FR-master
               TAG=$CIRCLE_SHA1
+              echo "Docker Image Tag: $TAG"  # Ajoutez cette ligne pour le débogage
               docker build -t $DOCKER_REPO:$TAG -t $DOCKER_REPO .
               echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
-              docker push mollymuffin/p13oc_orange_county_lettings:$TAG 
+              docker push mollymuffin/p13oc_orange_county_lettings:$TAG
+
     
   deploy:
     machine: true
