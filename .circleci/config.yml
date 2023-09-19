@@ -35,10 +35,10 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
-            docker build -t oc_lettings .
-            docker tag oc_lettings $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1
-            docker push $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1est  
+              echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+              docker build -t oc_lettings .
+              docker tag oc_lettings $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1
+              docker push $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1est  
     
   deploy:
     machine: true
