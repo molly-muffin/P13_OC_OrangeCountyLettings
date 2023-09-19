@@ -1,6 +1,4 @@
 import os
-<<<<<<< HEAD
-=======
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -19,7 +17,6 @@ sentry_sdk.init(
     # We recommend adjusting this value in production.
     profiles_sample_rate=1.0,
 )
->>>>>>> master
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,20 +24,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-<<<<<<< HEAD
 DEBUG = True
 
 ALLOWED_HOSTS = []
-=======
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
->>>>>>> master
 
 
 # Application definition
@@ -53,12 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
     'lettings',
     'profiles',
     'home',
->>>>>>> master
 ]
 
 MIDDLEWARE = [
