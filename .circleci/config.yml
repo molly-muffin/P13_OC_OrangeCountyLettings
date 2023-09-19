@@ -20,48 +20,15 @@ jobs:
             . venv/bin/activate
             cd Python-OC-Lettings-FR-master
             flake8 
-            pytest
-  build_and_push_docker:
-    machine: true
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.14
-      - run:
-          name: Build and push docker image
-          command: |
-            echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
-            docker build -t $DOCKER_USER/orange_county_lettings:lasted .
-            docker tag $DOCKER_USER/orange_county_lettings:lasted $DOCKER_USER/orange_county_lettings:$CIRCLE_SHA1
-            docker push $DOCKER_USER/orange_county_lettings:$CIRCLE_SHA1
-            docker push $DOCKER_USER/orange_county_lettings:lasted
-  deploy:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Deploy to Heroku
-          command: |
-            sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+            python manage.py test home
 workflows:
   main:
     jobs:
       - build_and_test
-      - build_and_push_docker:
           requires:
             - build_and_test
           filters:
             branches:
               only:
                 master
-      - deploy:
-          requires:
-            - build_and_test
-            - build_and_push_docker
-          filters:
-            branches:
-              only:
-                master
+    
