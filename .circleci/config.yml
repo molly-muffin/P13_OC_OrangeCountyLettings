@@ -35,11 +35,11 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-              cd Python-OC-Lettings-FR-master
-              echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
-              docker build -t oc_lettings .
-              docker tag oc_lettings:$CIRCLE_SHA1 $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1
-              docker push $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1  
+              TAG=$CIRCLE_SHA1
+              docker build -t $DOCKER_REPO:$TAG -t $DOCKER_REPO:latest .
+              echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
+              docker push $DOCKER_REPO:$TAG 
+              docker push $DOCKER_REPO:latest 
     
   deploy:
     machine: true
