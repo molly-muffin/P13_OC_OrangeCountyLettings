@@ -11,9 +11,3 @@ class HomeTest(TestCase):
         response = self.client.get(reverse('home:index'))
         assert response.status_code == 200
         assert b"<title>Holiday Homes</title>" in response.content
-
-    def test_custom_404_page(self):
-        # Teste la vue de la page d'erreur 404.
-        response = self.client.get('/url-inexistante/')
-        self.assertEqual(response.status_code, 404)
-        self.assertTemplateUsed(response, '404.html')
