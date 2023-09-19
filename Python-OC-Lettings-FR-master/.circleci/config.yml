@@ -15,7 +15,7 @@ jobs:
           name: Run Tests
           command: |
             flake8 --max-line-length 100 --exclude=migrations
-            pytest
+            python -m oc_lettings_site.manage test $TEST_DIR_HOME $TEST_DIR_LETTINGS $TEST_DIR_PROFILES
   build_and_push_docker:
     machine: true
     steps:
