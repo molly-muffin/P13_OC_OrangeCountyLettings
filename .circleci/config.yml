@@ -54,14 +54,14 @@ jobs:
 
 
 workflows:
-  main:
+  tests:
     jobs:
       - build_and_test:
           filters:
             branches:
               only:
                 master
-      - contenerize_and_deploy:
+    contenerize_and_deploy:
          jobs:
             - build_and_test:
                 filters:
