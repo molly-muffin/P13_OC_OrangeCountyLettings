@@ -64,13 +64,16 @@ Prérequis
 
 Cloner le dépôt
 ~~~~~~~~~~~~~~~
+
 .. code-block:: shell
+
    git clone https://github.com/molly-muffin/P13_OC_Orange_County_Lettings.git
 
 Créer l'environnement virtuel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
+
    cd /chemin/vers/projet/
    python -m venv venv
 
@@ -78,7 +81,9 @@ Activer l'environnement
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 ** Windows**
+
 .. code-block:: shell
+
    venv\Scripts\activate
 
 ** MacOS and Linux**
@@ -89,12 +94,14 @@ Désactiver l'environnement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
+
    deactivate
 
 Exécuter le site
 ~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
+
    cd /chemin/vers/projet/
    source venv/bin/activate
    pip install -r requirements.txt
@@ -104,13 +111,17 @@ Linting
 -------
 
 ** Flake8 **
+
 .. code-block:: shell
+
    cd /chemin/vers/projet/
    source venv/bin/activate
    flake8
 
 ** Tests unitaires **
+
 .. code-block:: shell
+
    cd /chemin/vers/projet/
    source venv/bin/activate
    python manage.py test home
