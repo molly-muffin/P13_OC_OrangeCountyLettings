@@ -19,7 +19,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd Python-OC-Lettings-FR-master
-            flake8 
+            flake8 --max-line-length 105
             python manage.py test home
 workflows:
   main:
