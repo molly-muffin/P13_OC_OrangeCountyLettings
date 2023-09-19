@@ -23,6 +23,36 @@ jobs:
             python manage.py test home 
             python manage.py test lettings 
             python manage.py test profiles 
+
+  build_and_push_docker_image:
+      docker:
+        - image: cimg/python:3.11.4
+      steps:
+        - checkout
+        - setup_remote_docker:
+            docker_layer_caching: true
+        - run:
+          name: Containerize on Docker
+          command: |
+            TAG=$CIRCLE_SHA1
+            docker build -t $DOCKER_IMAGE:$TAG -t $DOCKER_IMAGE:latest .
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            docker push $DOCKER_IMAGE:$TAG 
+            docker push $DOCKER_IMAGE:latest  
+    
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy on Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+
+
 workflows:
   main:
     jobs:
@@ -31,3 +61,22 @@ workflows:
             branches:
               only:
                 master
+      - contenerize_and_deploy:
+         jobs:
+            - build_and_test:
+                filters:
+                  branches:
+                    only: master
+            - build_and_push_docker_image:
+                requires:
+                  - build_and_test 
+                filters:
+                  branches:
+                    only: master
+            - deploy:
+                requires:
+                  - build_and_test
+                  - build_and_push_docker_image
+                filters:
+                  branches:
+                    only: master
