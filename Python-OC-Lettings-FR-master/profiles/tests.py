@@ -1,7 +1,7 @@
 # Module de tests pour l'application Profiles.
 from django.test import TestCase
 from django.urls import reverse
-from .models import Profile
+from profiles.models import Profile
 from django.contrib.auth.models import User
 
 

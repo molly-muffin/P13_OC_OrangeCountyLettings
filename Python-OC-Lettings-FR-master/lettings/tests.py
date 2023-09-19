@@ -1,7 +1,7 @@
 # Module de tests pour l'application Lettings.
 from django.test import TestCase
 from django.urls import reverse
-from .models import Address, Letting
+from lettings.models import Address, Letting
 
 
 class LettingsTest(TestCase):
