@@ -33,23 +33,8 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-              curl https://cli-assets.heroku.com/install.sh | sh
-              export HEROKU_API_KEY="$(heroku auth:token)"
-              echo "HEROKU_API_KEY=${HEROKU_API_KEY}" >> $BASH_ENV
-              echo $HEROKU_API_KEY | heroku auth:token
-              heroku create -a prodev-oc-lettings-site
-              heroku buildpacks:add heroku/python -a prodev-oc-lettings-site
-  deploy:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Deploy on Heroku
-          command: |
-            sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+              echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+
 
 
 workflows:
@@ -69,13 +54,6 @@ workflows:
       - build_and_push_docker_image:
           requires:
             - build_and_test 
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - build_and_test
-            - build_and_push_docker_image
           filters:
             branches:
               only: master
