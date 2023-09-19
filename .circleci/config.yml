@@ -30,15 +30,15 @@ jobs:
       steps:
         - checkout
         - setup_remote_docker:
+            version: 20.10.14
             docker_layer_caching: true
         - run:
             name: Containerize on Docker
             command: |
-              TAG=$CIRCLE_SHA1
-              docker build -t $DOCKER_IMAGE:latest
-              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-              docker push $DOCKER_IMAGE:$TAG 
-              docker push $DOCKER_IMAGE:latest  
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+            docker build -t oc_lettings .
+            docker tag oc_lettings $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1
+            docker push $DOCKER_LOGIN/$DOCKER_REPO:$CIRCLE_SHA1est  
     
   deploy:
     machine: true
