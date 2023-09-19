@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            flake8 --max-line-length 105 --exclude=migrations
+            flake8 --max-line-length 100 --exclude=migrations
             python -m oc_lettings_site.manage test $TEST_DIR_HOME $TEST_DIR_LETTINGS $TEST_DIR_PROFILES
   build_and_push_docker:
     machine: true
@@ -59,4 +59,8 @@ workflows:
           filters:
             branches:
               only:
+<<<<<<< HEAD
                 master
+=======
+                master
+>>>>>>> fbfcca0c235e7a9820b136a002be64ae10804568
