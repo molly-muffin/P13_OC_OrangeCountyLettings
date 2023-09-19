@@ -35,7 +35,7 @@ jobs:
         - run:
             name: Containerize on Docker
             command: |
-            cd Python-OC-Lettings-FR-master
+              cd Python-OC-Lettings-FR-master
               TAG=$CIRCLE_SHA1
               echo "Docker Image Tag: $TAG"  # Ajoutez cette ligne pour le débogage
               docker build -t $DOCKER_REPO:$TAG .
