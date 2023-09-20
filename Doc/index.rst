@@ -72,13 +72,13 @@ Créer l'environnement virtuel
 Activer l'environnement
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-** Windows**
+**Windows**
 
 .. code-block:: shell
 
    venv\Scripts\activate
 
-** MacOS and Linux**
+**MacOS and Linux**
 
 .. code-block:: shell
 
@@ -104,7 +104,7 @@ Exécuter le site
 Linting
 -------
 
-** Flake8 **
+**Flake8**
 
 .. code-block:: shell
 
@@ -112,7 +112,7 @@ Linting
    source venv/bin/activate
    flake8
 
-** Tests unitaires **
+**Tests unitaires**
 
 .. code-block:: shell
 
@@ -134,6 +134,7 @@ Déploiement
 ===========
 
 Le déploiement nécessite :
+
 - Compte CircleCi
 - Compte Docker
 - Compte Heroku
