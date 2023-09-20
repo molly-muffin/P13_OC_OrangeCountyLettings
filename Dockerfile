@@ -11,4 +11,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . /oc_p13_lettings/
 
-CMD python manage.py runserver 0.0.0.0:$PORT
+CMD python manage.py runserver 127.0.0.1:$PORT
