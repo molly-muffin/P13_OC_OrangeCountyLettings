@@ -10,4 +10,4 @@ class HomeTest(TestCase):
         # Teste la vue 'home:index'.
         response = self.client.get(reverse('home:index'))
         assert response.status_code == 200
-        assert b"<title>Holiday Homes</title>" in response.content
+        assert b"<title>Holidays Homes</title>" in response.content
