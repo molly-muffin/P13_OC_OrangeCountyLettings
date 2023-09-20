@@ -79,7 +79,9 @@ Activer l'environnement
    venv\Scripts\activate
 
 ** MacOS and Linux**
-.. code-block:: powershell
+
+.. code-block:: shell
+
    source venv/bin/activate
 
 Désactiver l'environnement
