@@ -10,5 +10,5 @@ COPY requirements.txt /oc_p13_lettings/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . /oc_p13_lettings/
-EXPOSE $PORT
-CMD python manage.py runserver 0.0.0.0:$PORT
+EXPOSE ${PORT}
+CMD python manage.py runserver 0.0.0.0:${PORT}
