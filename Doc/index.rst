@@ -12,7 +12,7 @@ Welcome to P13_OC_Orange_County_Lettings's documentation!
 
 
 Guide de Développement Local pour Orange County Lettings
-========================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. contents:: Table des matières
 
